@@ -6,11 +6,18 @@
 
 ---
 
-### This is dumb - complete overkill
+@snap[north-west]
+This is dumb - complete overkill
+@snapend
 
-- There are much easier ways run minecraft
-- Kubernetes 
+@snap[west list-content-verbose span-100]
+<br>
+@ul[list-bullets-circles]
+- There are much easier ways run a minecraft server
+- Kubernetes  
 - Views: Render Data via React
+@ulend
+@snapend
 
 ---
 

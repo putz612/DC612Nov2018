@@ -2,7 +2,7 @@
 
 # Minecraft on Kubernetes 
 
-### It's not just for<br><b>the kids</b> anymore
+### It's not just for<br>-the kids-<br>anymore
 
 ---
 

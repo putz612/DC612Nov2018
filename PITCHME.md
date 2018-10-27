@@ -2,7 +2,7 @@
 
 # Minecraft on Kubernetes 
 
-###It's not just for the kids anymore
+### It's not just for the kids anymore
 
 ---
 

@@ -2,7 +2,7 @@
 
 # Minecraft on Kubernetes 
 
-### It's not just for the kids anymore
+### It's not just for<br><b>the kids</b> anymore
 
 ---
 
@@ -14,8 +14,8 @@ This is dumb - complete overkill
 <br>
 @ul[list-bullets-circles]
 - There are much easier ways run a minecraft server
-- Kubernetes  
-- Views: Render Data via React
+- Kubernetes is not one of them 
+- Really cheap public services are out there for dollars a month
 @ulend
 @snapend
 

@@ -16,7 +16,6 @@
 - Minecraft YAML!
 @ulend
 
-
 ---
 
 @snap[north-west]
@@ -26,6 +25,7 @@ This is dumb - complete overkill
 @snap[west list-content-verbose span-100]
 <br>
 @ul[list-bullets-circles]
+- Maintaining this will only lead to tears
 - There are much easier ways to run a minecraft server
 - Kubernetes is not one of them 
 - There are really cheap public services are out there for dollars a month
@@ -59,10 +59,11 @@ Deployments own replications sets which creates pods that contain containers tha
 System requirements
 @snapend
 @ul[list-bullets-circles]
-- ESXi or Hyper-V
+- ESXi (or any other multi VM solution)
 - 6GB free ram
 - Ubuntu 18.04 ISO
 - About 30Gb of datastore for VM's
+- 3 static IP address
 - NFS storage for persistance
 @ulend
 
@@ -71,13 +72,15 @@ System requirements
 ### The Ugly
 
 - Everything is beta or alpha, get used to seeing that a lot
-- Requirements and approved sofware change constently
+- Requirements and approved sofware change constently, get the latest
 - RTFM and GitHub Issues is your best friend
 
 ---
 
 ### Sytem design
 
+@ul[](false)
 - Three nodes
   - One master
   - Two workers
+@ulend

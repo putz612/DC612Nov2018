@@ -9,8 +9,11 @@
 ### What are we going to cover
 
 @ul[circles]
-- Overview
-- cdscds
+- Overview of Kubernetes
+- Setup Requirements
+- System Design
+- Instalation 
+- Minecraft YAML!
 @ulend
 
 
@@ -30,23 +33,51 @@ This is dumb - complete overkill
 @snapend
 
 ---
-
+@snap[north span-100]
 Overview of Kubernetes
+@snapend
+@snap[west]
+What is Kubernetes?
+<p>
+At is core Kubernetes is a desired state machine for containers
+@snapend
 
-Desired state machine for containers
+@snap[south]
+Give it YAML
+<br>
+Get back infrastructure
+@snapend
 
 ---
 
+### Kubernetes Inception
+
+Deployments own replications sets which creates pods that contain containers that you can reach via services that connects to pods via endpoints of pods which can store persistant data in presistant volumes that it attaches to using persistant volume claims
+
+---
+@snap[north span-100]
 System requirements
-
-3 
+@snapend
+@ul[list-bullets-circles]
+- ESXi or Hyper-V
+- 6GB free ram
+- Ubuntu 18.04 ISO
+- About 30Gb of datastore for VM's
+- NFS storage for persistance
+@ulend
 
 ---
 
+### The Ugly
 
+- Everything is beta or alpha, get used to seeing that a lot
+- Requirements and approved sofware change constently
+- RTFM and GitHub Issues is your best friend
 
 ---
 
+### Sytem design
 
-
-![Flux Explained](https://facebook.github.io/flux/img/flux-simple-f8-diagram-explained-1300w.png)
+- Three nodes
+  - One master
+  - Two workers

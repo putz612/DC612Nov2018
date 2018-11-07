@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mc-dad
+  labels:
+    app: mc-dad
+spec:
+  type: NodePort
+  ports:
+  - port: 25565
+    nodePort: 31565
+    protocol: TCP
+  selector:
+    name: mc-dad

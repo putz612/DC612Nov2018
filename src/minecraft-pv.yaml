@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mc-dad
+  labels:
+    name: mc-dad
+spec:
+  capacity:
+    storage: 1Mi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 192.168.100.170
+    path: "/vmware/docker/mc-dad"

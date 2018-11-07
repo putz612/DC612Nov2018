@@ -8,11 +8,11 @@
 
 ### What are we going to cover
 
-@ul[circles]
+@ul[circles](false)
 - Overview of Kubernetes
 - Setup Requirements
 - System Design
-- Instalation 
+- Installation
 - Minecraft YAML!
 @ulend
 
@@ -48,39 +48,49 @@ Give it YAML
 Get back infrastructure
 @snapend
 
----
+---?image=https://wallpapercave.com/wp/i2JDlzW.jpg&opacity=40
 
 ### Kubernetes Inception
 
-Deployments own replications sets which creates pods that contain containers that you can reach via services that connects to pods via endpoints of pods which can store persistant data in presistant volumes that it attaches to using persistant volume claims
+Deployments own replications sets which creates pods that contain containers that you can reach via services that connects to pods via endpoints of pods which can store persistent data in persistent volumes that it attaches to using persistent volume claims
 
----
-@snap[north span-100]
-System requirements
-@snapend
-@ul[list-bullets-circles]
-- ESXi (or any other multi VM solution)
-- 6GB free ram
-- Ubuntu 18.04 ISO
-- About 30Gb of datastore for VM's
-- 3 static IP address
-- NFS storage for persistance
-@ulend
+---?image=https://storage.googleapis.com/cdn.thenewstack.io/media/2017/11/07751442-deployment.png&size=50% 100%&color=black
 
 ---
 
 ### The Ugly
 
 - Everything is beta or alpha, get used to seeing that a lot
-- Requirements and approved sofware change constently, get the latest
+- Requirements and approved sofware change constently, look for current information
 - RTFM and GitHub Issues is your best friend
 
 ---
 
-### Sytem design
+@snap[north span-100]
+System requirements
+@snapend
+@ul[list-bullets-circles](false)
+- ESXi (or any other multi VM solution)
+- 6GB free ram
+- Ubuntu 18.04 ISO
+- About 10Gb per VM to start
+- Static IP address per VM
+- NFS storage for persistance
+@ulend
+
+---
+
+### System design
 
 @ul[](false)
-- Three nodes
+- Three nodes (VM's)
   - One master
   - Two workers
+- All VM's on the same subnet
+  - Do NOT add a seperate network for cluster traffic unless you like fixing routing tables
+- Partition layout
+  - 10GB OS
+  - /var/lib/docker on separate filesystem
 @ulend
+
+--- 

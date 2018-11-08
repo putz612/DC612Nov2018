@@ -16,7 +16,18 @@
 - Minecraft YAML!
 @ulend
 
----
+---?image=https://i.kym-cdn.com/entries/icons/original/000/000/248/profit.jpg&opacity=30
+
+### Why Kubernetes <br>and Minecraft
+@ul[](false)
+- Desire to learn Kubernetes
+- Most guides miss middle ground
+  - Minikube on desktop
+  - Cloud scale
+- Kids wanted a Minecraft server
+@ulend
+
+---?image=https://hackadaycom.files.wordpress.com/2016/08/yakshaving.jpg&opacity=30
 
 @snap[north-west]
 This is dumb - complete overkill
@@ -32,7 +43,8 @@ This is dumb - complete overkill
 @ulend
 @snapend
 
----
+---?image=https://cdn-images-1.medium.com/max/1600/1*9NG_meMVwlOwq30TWp5f_w.jpeg&opacity=20
+
 @snap[north span-100]
 Overview of Kubernetes
 @snapend
@@ -114,7 +126,8 @@ System requirements
 ### Bringing up the cluster 
 On the master run
 ```
-# sudo kubeadm init
+$ sudo -s
+# kubeadm init
 .....
    Lots of checks and messages
 .....
@@ -124,24 +137,24 @@ Your Kubernetes master has initialized successfully!
 ```
 To administer as a normal user
 ```
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+$ mkdir -p $HOME/.kube
+$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+$ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
 ---
 
-### Lets talk about Networks
+### Lets talk about the CNI <br> Container Network Interface
 @ul[](false)
 - Lots of different options
 - L2, L3, VXLAN, BGP, OSPF
-- CRD's and ETCD for configs
+- CRD's and etcd for configs
 - Encryption options
 - I am not going to cover all of them
 - Were picking Weave Net
 @ulend
 ```
-kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+$ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 ```
 
 ---
@@ -155,7 +168,10 @@ Use the join token from before
 ```
 Disconnect, we are done with the workers
 
----
+---?image=https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Binary-Code-Background-Full-HD-PIC-WPB003927.jpg
+
+### Creating a Pod for Minecraft
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -185,7 +201,7 @@ spec:
 @[16-17](Container ports we wish to expose)
 @[18](When are we pulling the image)
 
----
+---?image=https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Binary-Code-Background-Full-HD-PIC-WPB003927.jpg
 
 ### Test in Prod
 
@@ -266,7 +282,9 @@ Clean up and lets add a replication controller
 # kubectl delete -f dc612-pod.yaml
 ```
 
----
+---?image=https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Binary-Code-Background-Full-HD-PIC-WPB003927.jpg
+
+### Replication controller for Minecraft
 
 ```yaml
 apiVersion: v1
@@ -300,6 +318,7 @@ spec:
 @[13-23](Same pod as before)
 
 ---
+
 ### How do we get to it?
 
 There are three classic types of services
@@ -314,7 +333,9 @@ There are three classic types of services
   - Only on a real cloud
   - There are options though, see references
 
----
+---?image=https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Binary-Code-Background-Full-HD-PIC-WPB003927.jpg
+
+### Node Port Service
 
 ```yaml
 apiVersion: v1
@@ -362,9 +383,9 @@ Export list for 192.168.100.170:
 # umount /mnt
 ```
 @[1-3](Get the list of exports from the nas)
-@[5-7](Mount the NAS, make a home, unmount)
+@[5-7](Mount the NAS, make a folder, unmount)
 
----
+---?image=https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Binary-Code-Background-Full-HD-PIC-WPB003927.jpg
 
 ### Make the Persistent volume
 ```yaml
@@ -388,7 +409,7 @@ spec:
 @[13](NAS IP address)
 @[14](Export path + folder)
 
----
+---?image=https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Binary-Code-Background-Full-HD-PIC-WPB003927.jpg
 
 ### Make the Persistent Claim
 
@@ -407,7 +428,7 @@ spec:
 ```
 @[11](Must match volume spec)
 
----
+---?image=https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Binary-Code-Background-Full-HD-PIC-WPB003927.jpg
 
 ### New replication controller with persistence
 
@@ -443,16 +464,22 @@ spec:
         persistentVolumeClaim:
           claimName: dc612
 ```
-
+@[24-26](Volume mount in container)
+@[25](Name of the volume we are mounting)
+@[26](Where to mount inside of the container)
+@[27-30](Volume list to fullfull requests)
+@[28](Matching volume name)
+@[29-30](How to fufill the claim)
 ---
 
 
 ### References 
-Install CRI
-https://kubernetes.io/docs/setup/cri/
 
 Install Kubeadm
 https://kubernetes.io/docs/setup/independent/install-kubeadm/
+
+Install CRI
+https://kubernetes.io/docs/setup/cri/
 
 CNI Overview
 https://chrislovecnm.com/kubernetes/cni/choosing-a-cni-provider/
